@@ -7,7 +7,14 @@ import Navbar from './components/Navbar';
 import Alertcomp from './components/Alertcomp';
 
 
-
+import {
+ 
+  Route,
+  Link,
+  Routes,
+  
+  BrowserRouter
+} from "react-router-dom";
 
 
 function App() {
@@ -51,21 +58,16 @@ const toggleMode =() =>{
 }
   return (
   <>
-{/* below title=prathmesh is used as a prop */}
-
-<Navbar title='TextMan' mode={mode} toggleMode={toggleMode}/>   
-
-<Alertcomp alert={alert}/>
-<div className="container-md my-3  "  >
-
-<Inputform showAlert={showAlert} heading="Enter The Text To Analyze below"/> 
-{/* <About/> */}
-
-
-
-</div>
-
-
+ <BrowserRouter>
+      <Navbar title='TextMan' mode={mode} toggleMode={toggleMode} />
+      <Alertcomp alert={alert} />
+      <div className="container-md my-3">
+        <Routes>
+          <Route path="/" element={<Inputform showAlert={showAlert} heading="Enter The Text To Analyze below" />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
 
   </>
   );
